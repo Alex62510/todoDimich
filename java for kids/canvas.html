@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Canvas</title>
+</head>
+<body>
+<canvas id="canvas" width="200" height="200"></canvas>
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "Green";
+ctx.beginPath();
+ctx.moveTo(50, 10);
+ctx.lineTo(70, 10);
+ctx.lineTo(70, 30);
+ctx.lineTo(50, 30);
+ctx.lineTo(50, 10);
+ctx.moveTo(60, 30);
+ctx.lineTo(60, 70);
+ctx.moveTo(25, 40);
+ctx.lineTo(60, 50);
+ctx.lineTo(95, 40);
+ctx.moveTo(25, 90);
+ctx.lineTo(60, 70);
+ctx.lineTo(95, 90)
+ctx.fill();
+</script>
+</body>
+</html>
