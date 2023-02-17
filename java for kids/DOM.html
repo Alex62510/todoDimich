@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn DOM</title>
+</head>
+<body>
+<h1 id="main-heading">Hello world!</h1>
+<p1> Fack you! </p1>
+<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<script>
+var counter = 1;
+var printMessage = function () {
+console.log("Ты смотришь в консоль уже " + counter + " сек");
+counter++;
+};
+var intervalId = setInterval(printMessage, 5000);
+
+</script>
+</body>
+</html>
