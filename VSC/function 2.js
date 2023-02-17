@@ -3,5 +3,5 @@ function squareSum(numbers) {
   for (var i = 0; i < numbers.length; i++) {
     result += numbers[i] * numbers[i];
   }
-  return result;
+  return result; //result
 }
