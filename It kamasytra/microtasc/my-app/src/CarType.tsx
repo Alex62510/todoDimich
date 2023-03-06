@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export type DifCarType = {
     manufacturer: string
     model: string
@@ -7,37 +9,40 @@ type PropsType = {
     name: string
     facture: Array<DifCarType>
     model: Array<DifCarType>
+    modelCar: string
 
 }
 
 export const TopRaiting = (props: PropsType) => {
     return (
         <div>
-            <h1>{props.name}</h1>
-            {
-                props.facture.map((t) => {
-                        return (
-                            <div>
-                                <li>
-                       {t.manufacturer}
-                                </li>
-                            </div>)
-                    }
-                )
-            }
-                <div>
-                <li>
-                    {
-                        props.model.map((t) => {
-                            return (
-                                <div>
-                                    {t.model}
-                                </div>)
+            <table>
+                    <tr>
+                        <td>{props.name}</td>
+                        {props.facture.map((t, index) => {
+                                return (
+                            <td key={index}>
+                                <div>{index+1}</div>
+                                {t.manufacturer}
+                                    </td>
+                                )
+                            }
+                        )
                         }
-                    )
-                    }
-                </li>
-            </div>
+                    </tr>
+                <tr>
+                    <td>{props.modelCar}</td>
+                        {props.facture.map((p,index) => {
+                                return (
+                                    <td key={index}>
+                                        {p.model}
+                                    </td>
+                                )
+                            }
+                        )
+                        }
+                </tr>
+            </table>
         </div>
     )
 }
