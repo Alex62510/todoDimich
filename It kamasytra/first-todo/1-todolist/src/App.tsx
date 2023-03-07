@@ -13,11 +13,13 @@ function App(): JSX.Element {
         {id: 1,  title: "HTNL & CSS", isDone: true},
         {id: 2, title: "CSS & SCSS", isDone: true},
         {id: 3, title: "ES6/TS", isDone: false},
+
     ];
     const tasks1: TaskType[] = [
         {id: 1, title: "HTNL & CSS", isDone: false},
         {id: 2, title: "CSS & SCSS", isDone: false},
         {id: 3, title: "ES6/TS", isDone: false},
+        {id: 4, title: "Redax", isDone: false},
     ]
     return (
         <div className="App">
