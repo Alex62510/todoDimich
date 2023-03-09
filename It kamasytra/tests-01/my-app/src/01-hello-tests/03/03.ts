@@ -76,3 +76,8 @@ export const toFireStaff = (firestaff:GovernmentBuildingType, staffCount: number
 export const toHireStaff = (hireestaff:GovernmentBuildingType, staffCount: number)=>{
    hireestaff.staffCount += 20;
 }
+
+function remoteWhitespaces(string){
+    string.split(' ').filter(s=>s!=="").join('_')
+}
+console.log(remoteWhitespaces('you are JS developer'))
