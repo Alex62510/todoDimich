@@ -1,5 +1,5 @@
 import ReactDom from "react-dom";
-
+import ReactDOM from 'react-dom'
 export const VideoHeader=(props:{videoName:string})=>{
     return<div>
         {props.videoName}
@@ -18,9 +18,9 @@ export const VideoDescription=(props:{videoDescription:string})=>{
 
 export const YoutubeVideo=(props:any)=>{
     return<div>
-        <VideoHeader videoName={video} />
-        <VideoContent videoContent={} />
-        <VideoDescription videoDescription={} />
+        <VideoHeader videoName={props.title} />
+        <VideoContent videoContent={props.link} />
+        <VideoDescription videoDescription={props.description} />
     </div>
 }
 export const App=()=>{
@@ -30,3 +30,9 @@ export const App=()=>{
         description:"Best free react-course"
     }
 }
+return <YoutubeVideo video={video} />
+}
+
+ReactDOM.render(<App />,
+    document.getElementById('root')
+);
