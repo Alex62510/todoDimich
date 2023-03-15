@@ -1,41 +1,62 @@
 import React, {useState} from 'react';
 import './App.css';
 import Todolist from "./Todolist";
+import {type} from "os";
+import {v1} from "uuid";
 
+export type FilterVuluesType = "All" | "Active" | "Completed"
 export type TaskType = {
-    id: number
+    id: string
     title: string
     isDone: boolean
 }
 
-
 function App(): JSX.Element {
-    let initTasks: TaskType[] = [
-        {id: 1,  title: "HTML & CSS", isDone: true},
-        {id: 2, title: "CSS & SCSS", isDone: true},
-        {id: 3, title: "ES6/TS", isDone: false},
-        {id: 4, title: "React", isDone: false},
-    ]
-    let [tasks, setTasks]= useState(initTasks)
-    function removeTask(id: number) {
-        let  filtredTasks = tasks.filter(t=>t.id !==id)
-        setTasks(filtredTasks)
+
+    const [tasks, setTasks] = useState<Array<TaskType>>([
+        {id: v1(), title: "HTNL & CSS", isDone: true},
+        {id: v1(), title: "CSS & SCSS", isDone: true},
+        {id: v1(), title: "ES6/TS", isDone: false},
+        {id: v1(), title: "Redax", isDone: false},
+        {id: v1(), title: "GraphQv1(", isDone: false},
+    ])
+    const remoteTask = (taskId: string) => {
+        setTasks(tasks.filter(task => task.id !== taskId))
+        console.log(tasks)
     }
-    useState(tasks)
-    // const tasks1: TaskType[] = [
-    //     {id: 1, title: "HTML & CSS", isDone: false},
-    //     {id: 2, title: "CSS & SCSS", isDone: false},
-    //     // {id: 3, title: "ES6/TS", isDone: false},
-   // ]
+
+    function addTask(title: string) {
+        let newTask = {id: v1(), title: title, isDone: false};
+        let newTasks = [newTask, ...tasks];
+        setTasks(newTasks);
+    }
+
+    const [filter, setFilter] = useState<FilterVuluesType>("All")
+
+    const changeTodoListFilter = (filter: FilterVuluesType) => {
+        setFilter(filter)
+
+    }
+    let taskForRender: Array<TaskType> = []
+    if (filter === "All") {
+        taskForRender = tasks
+    }
+    if (filter === "Active") {
+        taskForRender = tasks.filter((t) => !t.isDone)
+    }
+    if (filter === "Completed") {
+        taskForRender = tasks.filter((t) => t.isDone)
+    }
+
     return (
         <div className="App">
             <Todolist
+                remoteTask={remoteTask}
                 title={"Whats to learn"}
-                tasks={tasks}
-                removeTask={removeTask}
+                tasks={taskForRender}
+                changeTodoListFilter={changeTodoListFilter}
+                addTask={addTask}
             />
-            {/*<Todolist title={"What to buy"} tasks={tasks1}/>*/}
-            {/*<Todolist title={"What to read"} task={tasks}/>*/}
         </div>
     );
 }
