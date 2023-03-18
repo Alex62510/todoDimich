@@ -17,3 +17,15 @@
    padding: 20px;
    background-color: brown;
  }
+.error {
+    border:  red 2px solid;
+}
+.error-message {
+    color: red
+}
+.active-filter {
+    background: aquamarine;
+}
+.is-Done {
+    opacity: 0.5
+}
