@@ -4,57 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5ba093d-2762-41a4-893d-316d280c82db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/.idea/exam-monday-01.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/02monday/01.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/02monday/02.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/02monday/03.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/02monday/04.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/02monday/05.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/02monday/06.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/02monday/07.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/02monday/08.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/02monday/09.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/02monday/10.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/exam.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../externaltaskTodolist/.idea/externaltaskTodolist.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../first-todo/.idea/first-todo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/.idea/microtask-button.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/src/App.test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/src/components/Button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/src/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/src/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/src/react-app-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/src/reportWebVitals.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/src/setupTests.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-button/yarn.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-useState/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-useState/.idea/microtask-useState.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-useState/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microtask-useState/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../exam-monday-01/my-app/src/component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/01monday/component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../exam-monday-01/my-app/src/component07.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/01monday/component07.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../exam-monday-01/my-app/src/component09.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/01monday/component09.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../exam-monday-01/my-app/src/component10.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../exam-monday-01/my-app/src/01monday/component10.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todoDimich/1-todolist/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../todoDimich/1-todolist/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todoDimich/1-todolist/src/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../todoDimich/1-todolist/src/Todolist.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="b5ba093d-2762-41a4-893d-316d280c82db" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +23,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/IT/It kamasytra/todoDimich",
+    "last_opened_file_path": "D:/IT/It-Inkybator/exam-monday-01",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -91,6 +41,7 @@
       <updated>1678390312683</updated>
       <workItem from="1678390314001" duration="12000" />
       <workItem from="1678715123501" duration="848000" />
+      <workItem from="1679246262348" duration="18000" />
     </task>
     <servers />
   </component>
