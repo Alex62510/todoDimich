@@ -10,6 +10,11 @@ export type TaskType = {
     title: string
     isDone: boolean
 }
+export type TodoListType = {
+    id: string
+    title: string
+    filter: FilterVuluesType
+}
 
 function App(): JSX.Element {
 
@@ -24,13 +29,13 @@ function App(): JSX.Element {
         setTasks(tasks.filter(task => task.id !== taskId))
         console.log(tasks)
     }
-const chingeStatus=(taskId:string,isDone:boolean)=>{
-        let task=tasks.find(t=>t.id===taskId);
-        if(task){
-            task.isDone=isDone
+    const chingeStatus = (taskId: string, isDone: boolean) => {
+        let task = tasks.find(t => t.id === taskId);
+        if (task) {
+            task.isDone = isDone
         }
-setTasks([...tasks])
-        }
+        setTasks([...tasks])
+    }
 
 
     function addTask(title: string) {
@@ -39,34 +44,46 @@ setTasks([...tasks])
         setTasks(newTasks);
     }
 
-    const [filter, setFilter] = useState<FilterVuluesType>("All")
 
-    const changeTodoListFilter = (filter: FilterVuluesType) => {
-        setFilter(filter)
+    const changeTodoListFilter = (filter: FilterVuluesType, todOlistId: string) => {
+let todolist=todolists.map(t=>t.id===todOlistId? {...t, filter: filter}: t)
+        setTodolists(todolist)
+    }
 
-    }
-    let taskForRender: Array<TaskType> = []
-    if (filter === "All") {
-        taskForRender = tasks
-    }
-    if (filter === "Active") {
-        taskForRender = tasks.filter((t) => !t.isDone)
-    }
-    if (filter === "Completed") {
-        taskForRender = tasks.filter((t) => t.isDone)
-    }
+    const [todolists, setTodolists]=useState<Array<TodoListType>> ([
+        {id: v1(), title: "Whats to buy", filter: "Active"},
+        {id: v1(), title: "Whats to learn", filter: "Completed"}
+    ])
+
 
     return (
+
         <div className="App">
-            <Todolist
-                chingeTaskStatus={chingeStatus}
-                remoteTask={remoteTask}
-                title={"Whats to learn"}
-                tasks={taskForRender}
-                changeTodoListFilter={changeTodoListFilter}
-                addTask={addTask}
-                filter={filter}
-            />
+            {todolists.map(t => {
+                let taskForRender: Array<TaskType> = []
+                if (t.filter === "All") {
+                    taskForRender = tasks
+                }
+                if (t.filter === "Active") {
+                    taskForRender = tasks.filter((t) => !t.isDone)
+                }
+                if (t.filter === "Completed") {
+                    taskForRender = tasks.filter((t) => t.isDone)
+                }
+
+                return <Todolist
+                    key={t.id}
+                    id={t.id}
+                    chingeTaskStatus={chingeStatus}
+                    remoteTask={remoteTask}
+                    title={t.title}
+                    tasks={taskForRender}
+                    changeTodoListFilter={changeTodoListFilter}
+                    addTask={addTask}
+                    filter={t.filter}
+                />
+            })
+            }
         </div>
     );
 }
