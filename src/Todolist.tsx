@@ -6,12 +6,13 @@ import error = Simulate.error;
 type TodolistPropsType = {
     title: string
     tasks: Array<TaskType>
-    remoteTask: (taskId: string) => void
+    remoteTask: (taskId: string, todolistId: string) => void
     changeTodoListFilter: (filter: FilterVuluesType, todOlistId: string) => void
-    addTask: (title: string) => void
-    chingeTaskStatus: (taskId: string, isDone: boolean) => void
+    addTask: (title: string, todolistId: string) => void
+    chingeTaskStatus: (taskId: string, isDone: boolean, todolistId: string) => void
     filter: "All" | "Active" | "Completed"
     id: string
+    removeTodolist:(todolistId: string)=>void
 }
 
 const Todolist: FC<TodolistPropsType> = (props) => {
@@ -30,12 +31,12 @@ const Todolist: FC<TodolistPropsType> = (props) => {
 
     const todoListItems = props.tasks.map((task) => {
         const onRemoveHandler = () => {
-            props.remoteTask(task.id)
+            props.remoteTask(task.id, props.id)
         }
 
         const onChingeHandler = (e: ChangeEvent<HTMLInputElement>) => {
             console.log(task.id + e.currentTarget.checked)
-            props.chingeTaskStatus(task.id, e.currentTarget.checked)
+            props.chingeTaskStatus(task.id, e.currentTarget.checked, props.id)
         }
 
 
@@ -57,13 +58,14 @@ const Todolist: FC<TodolistPropsType> = (props) => {
     const OnKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError("")
         if (e.charCode === 13) {
-            props.addTask(newTaskTitle)
-            setNewTaskTitle("")
+            newTaskTitle.trim() && props.addTask(newTaskTitle, props.id)
+             setNewTaskTitle("")
+            !newTaskTitle.trim() && setError("The field is empty")
         }
     }
     const addTask = () => {
         if (newTaskTitle.trim() !== '') {
-            props.addTask(newTaskTitle.trim())
+            props.addTask(newTaskTitle.trim(), props.id)
             setNewTaskTitle("")
         } else {
             setError("The field is empty")
@@ -79,9 +81,14 @@ const Todolist: FC<TodolistPropsType> = (props) => {
     const onCompletedClickFilter = () => {
         props.changeTodoListFilter("Completed", props.id)
     }
+    const removeTodolist = () => {
+        props.removeTodolist(props.id)
+    }
     return (
         <div className={todoClass}>
-            <h3>{props.title}</h3>
+            <h3>{props.title}
+                <button onClick={removeTodolist}>x</button>
+            </h3>
             <div>
                 <input
                     className={error ? "error" : ""}
