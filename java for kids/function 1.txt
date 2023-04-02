@@ -1,6 +1,0 @@
-var ourfirstFunction = function () {
-console.log("Hello world");
-};
-ourfirstFunction();
-
-
