@@ -4,7 +4,7 @@ import {Rating, RatingValueType} from "./Rating";
 export default {
     title: 'Rating stories',
     component: Rating,
-    };
+};
 
 export const EmptyRaiting = () => <Rating value={0} onClick={a=>a} />;
 export const Raiting1 = () => <Rating value={1} onClick={a=>a} />;
@@ -16,4 +16,3 @@ export const RatingChinging= () => {
     const [rating, setRating]=useState<RatingValueType>(3)
     return <Rating value={rating} onClick={setRating} />;
 }
-

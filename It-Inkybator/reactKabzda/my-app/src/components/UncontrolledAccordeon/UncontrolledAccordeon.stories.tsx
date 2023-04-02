@@ -5,7 +5,7 @@ import {UncontrolledAccordeon} from "./UncontrolledAccordeon";
 export default {
     title: 'UncontrolledAccordeon',
     component: UncontrolledAccordeon,
-    };
+};
 
 export const ModeChinging= () => {
     return <UncontrolledAccordeon titleValue={"Users"} />

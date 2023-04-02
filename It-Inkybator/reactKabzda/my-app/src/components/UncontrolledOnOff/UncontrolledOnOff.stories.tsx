@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
-import {UncontrolledonOff} from "./UncontrolledonOff";
+import {UncontrolledOnOff} from "./UncontrolledOnOff";
 import {action, actions} from "@storybook/addon-actions";
 
 export default {
     title: 'UncontrolledonOff',
-    component: UncontrolledonOff,
-    };
+    component: UncontrolledOnOff,
+};
 
 const callback=action("Switch")
-export const OnMode= () => <UncontrolledonOff onChange={callback} defaultOn={true}/>;
+export const OnMode= () => <UncontrolledOnOff onChange={callback} defaultOn={true}/>;
 
-export const OffMode= () => <UncontrolledonOff  onChange={callback} defaultOn={true}/>;
-
-
+export const OffMode= () => <UncontrolledOnOff  onChange={callback} defaultOn={true}/>;

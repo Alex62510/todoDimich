@@ -4,7 +4,7 @@ type PropsType = {
     onChange: (on: boolean) => void
     defaultOn?:boolean
 }
-export const UncontrolledonOff = (props: PropsType) => {
+export const UncontrolledOnOff = (props: PropsType) => {
 
     let [on, setOn] = useState(props.defaultOn ? props.defaultOn : false)
 
