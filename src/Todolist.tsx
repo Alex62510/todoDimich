@@ -1,7 +1,6 @@
-import React, {ChangeEvent, FC, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent, FC} from 'react';
+import { AddItemForm } from './AddItemFormType';
 import {FilterVuluesType, TaskType} from "./App";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 
 type TodolistPropsType = {
     title: string
@@ -14,11 +13,7 @@ type TodolistPropsType = {
     id: string
     removeTodolist:(todolistId: string)=>void
 }
-
 const Todolist: FC<TodolistPropsType> = (props) => {
-
-    const [newTaskTitle, setNewTaskTitle] = useState("")
-    const [error, setError] = useState("")
 
     let isAllTasrsIsNotDane = true
     for (let i = 0; i < props.tasks.length; i++) {
@@ -33,13 +28,10 @@ const Todolist: FC<TodolistPropsType> = (props) => {
         const onRemoveHandler = () => {
             props.remoteTask(task.id, props.id)
         }
-
         const onChingeHandler = (e: ChangeEvent<HTMLInputElement>) => {
             console.log(task.id + e.currentTarget.checked)
             props.chingeTaskStatus(task.id, e.currentTarget.checked, props.id)
         }
-
-
         return (
             <li key={task.id} className={task.isDone ? "is-Done" : ""}>
                 <input
@@ -51,27 +43,6 @@ const Todolist: FC<TodolistPropsType> = (props) => {
             </li>
         )
     })
-    const OnChangeTaskTitle = (e: ChangeEvent<HTMLInputElement>) => {
-        setNewTaskTitle(e.currentTarget.value)
-
-    }
-    const OnKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError("")
-        if (e.charCode === 13) {
-            newTaskTitle.trim() && props.addTask(newTaskTitle, props.id)
-             setNewTaskTitle("")
-            !newTaskTitle.trim() && setError("The field is empty")
-        }
-    }
-    const addTask = () => {
-        if (newTaskTitle.trim() !== '') {
-            props.addTask(newTaskTitle.trim(), props.id)
-            setNewTaskTitle("")
-        } else {
-            setError("The field is empty")
-        }
-
-    }
     const onAllClickFilter = () => {
         props.changeTodoListFilter("All", props.id)
     }
@@ -84,20 +55,17 @@ const Todolist: FC<TodolistPropsType> = (props) => {
     const removeTodolist = () => {
         props.removeTodolist(props.id)
     }
+
+    const addTask = (title:string)=>{
+        props.addTask(title,props.id)
+
+    }
     return (
         <div className={todoClass}>
             <h3>{props.title}
                 <button onClick={removeTodolist}>x</button>
             </h3>
-            <div>
-                <input
-                    className={error ? "error" : ""}
-                    value={newTaskTitle}
-                    onChange={OnChangeTaskTitle}
-                    onKeyPress={OnKeyPressHandler}/>
-                <button onClick={addTask}>+</button>
-                {error && <div className={'error-message'}>{error}</div>}
-            </div>
+           <AddItemForm addItem={addTask}/>
             <ul>
                 {todoListItems}
             </ul>
