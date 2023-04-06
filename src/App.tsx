@@ -16,8 +16,8 @@ export type TodoListType = {
     title: string
     filter: FilterVuluesType
 }
-export type TaskStateType={
-    [key:string]:Array<TaskType>
+export type TaskStateType = {
+    [key: string]: Array<TaskType>
 }
 
 function App(): JSX.Element {
@@ -29,12 +29,11 @@ function App(): JSX.Element {
         setTasks({...tasks})
         console.log(tasks)
     }
-    const chingeStatus = (taskId: string, isDone: boolean, todolistId: string) => {
-        let task = tasks[todolistId].find(t => t.id === taskId);
-        if (task) {
-            task.isDone = isDone
-            setTasks({...tasks})
-        }
+    const changeStatus = (taskId: string, isDone: boolean, todolistId: string) => {
+        setTasks({...tasks, [todolistId]: tasks[todolistId].map(t => t.id === taskId ? {...t, isDone: isDone} : t)})
+    }
+    const changeTaskTitle = (taskId: string, newValue: string, todolistId: string) => {
+        setTasks({...tasks, [todolistId]: tasks[todolistId].map(t => t.id === taskId ? {...t, title: newValue} : t)})
     }
 
     function addTask(title: string, todolistId: string) {
@@ -53,6 +52,9 @@ function App(): JSX.Element {
         setTodolists(todolist)
         delete tasks[todolistId]
         setTasks({...tasks})
+    }
+    const changeTodolistTitle = (todolistId: string, title: string) => {
+        setTodolists(todolists.map(t => t.id === todolistId ? {...t, title: title} : t))
     }
 
     let todolistId1 = v1()
@@ -83,7 +85,7 @@ function App(): JSX.Element {
             filter: "All"
         }
         setTodolists([newTodolist, ...todolists])
-        setTasks({...tasks,[newTodolist.id]:[]})
+        setTasks({...tasks, [newTodolist.id]: []})
     }
     return (
 
@@ -104,7 +106,9 @@ function App(): JSX.Element {
                 return <Todolist
                     key={t.id}
                     id={t.id}
-                    chingeTaskStatus={chingeStatus}
+                    changeTodolistTitle={changeTodolistTitle}
+                    changeTaskTitle={changeTaskTitle}
+                    changeTaskStatus={changeStatus}
                     remoteTask={remoteTask}
                     title={t.title}
                     tasks={taskForRender}
