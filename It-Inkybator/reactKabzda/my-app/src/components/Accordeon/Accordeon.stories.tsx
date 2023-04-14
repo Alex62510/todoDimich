@@ -1,28 +1,43 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import {Accordeon, AccordeonPropsType} from "./Accordeon";
+import React, {useState} from 'react';
+import {Accordeon} from "./Accordeon";
 import {action} from "@storybook/addon-actions";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: 'Example/Button',
+    title: 'Example/Accordeon',
     component: Accordeon,
-    // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-} as ComponentMeta<typeof Accordeon>;
-
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Accordeon> = (args:AccordeonPropsType) => <Accordeon {...args} />;
-const callback=action("Accordeon mode chinge event fired")
-
-export const MenuCollapsedMode2 = Template.bind({});
-MenuCollapsedMode2.args={
-    onChange:callback,
-    collapsed:true,
-    titleValue:"Menu",
-
 }
 
-export const MenuCollapsedMode = ()=><Accordeon titleValue={'Menu'} collapsed={true} onChange={callback}/>
+
+const callback = action("Accordeon mode chinge event fired")
+const onClickEvent = action("Some Item was clicked")
+export const MenuCollapsedMode = () => <Accordeon
+    titleValue={"Menu"}
+    collapsed={true}
+    onChange={callback} items={[]}
+    onClick={onClickEvent}
+/>
+export const MenuUncollapsedMode = () => <Accordeon
+    titleValue={"Users"}
+    collapsed={false}
+    onChange={callback}
+    items={[{title: "Dima", value: 1}, {title: "Valera", value: 2}, {title: "Artem", value: 3}, {
+        title: "Victor",
+        value: 4
+    }]}
+    onClick={onClickEvent}
+/>
+
+
+export const ModeChanging = () => {
+    const [value, setValue] = useState<boolean>(true)
+    return <Accordeon
+        titleValue={'Users'}
+        collapsed={value}
+        onChange={() => setValue(!value)}
+        items={[{title: "Dima", value: 1}, {title: "Valera", value: 2}, {title: "Artem", value: 3}, {
+            title: "Victor",
+            value: 4
+        }]}
+        onClick={onClickEvent}
+    />
+}
