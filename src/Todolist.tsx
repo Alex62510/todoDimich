@@ -1,3 +1,5 @@
+import { Delete } from '@mui/icons-material';
+import { Button, IconButton } from '@mui/material';
 import React, {ChangeEvent, FC} from 'react';
 import {AddItemForm} from './AddItemFormType';
 import {FilterVuluesType, TaskType} from "./App";
@@ -40,6 +42,7 @@ const Todolist: FC<TodolistPropsType> = (props) => {
             props.changeTaskTitle(task.id, newValue, props.id)
         }
 
+        // @ts-ignore
         return (
             <li key={task.id} className={task.isDone ? "is-Done" : ""}>
                 <input
@@ -47,7 +50,9 @@ const Todolist: FC<TodolistPropsType> = (props) => {
                     type="checkbox"
                     checked={task.isDone}/>
                 <EditableSpan title={task.title} onChange={onChangeTitleHandler}/>
-                <button onClick={onRemoveHandler}>x</button>
+                <IconButton onClick={onRemoveHandler} size="small">
+                    <Delete fontSize="small" />
+                </IconButton>
             </li>
         )
     })
@@ -82,14 +87,14 @@ const Todolist: FC<TodolistPropsType> = (props) => {
                 {todoListItems}
             </ul>
             <div>
-                <button className={props.filter === "All" ? "active-filter" : ""} onClick={onAllClickFilter}>All
-                </button>
-                <button className={props.filter === "Active" ? "active-filter" : ""}
+                <Button  size="small" variant="contained" color="primary" className={props.filter === "All" ? "active-filter" : ""} onClick={onAllClickFilter}>All
+                </Button>
+                <Button className={props.filter === "Active" ? "active-filter" : ""}
                         onClick={onActiveClickFilter}>Active
-                </button>
-                <button className={props.filter === "Completed" ? "active-filter" : ""}
+                </Button>
+                <Button className={props.filter === "Completed" ? "active-filter" : ""}
                         onClick={onCompletedClickFilter}>Completed
-                </button>
+                </Button>
             </div>
         </div>
     );
