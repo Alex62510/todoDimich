@@ -30,7 +30,7 @@ const selector = (state: RootStateType) => state.users.items
 
 const Users = () => {
 
-    const users = selector(store)
+    const users = useSelector(selector)
 
     return <ul>
         {users.map(u => <li key={u.id}>{u.name}</li>)}
