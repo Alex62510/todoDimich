@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react'
+import React, {useCallback, useMemo, useState} from 'react'
 import ReactDOM from 'react-dom'
 
 type ButtonType = {
@@ -18,7 +18,7 @@ export const App = ({isAdmin}: { isAdmin: boolean }) => {
 
     const increaseSeconds = () => setSeconds(seconds + 10)
 
-    const correctButtons = useCallback(() => {
+    const correctButtons = useMemo(() => {
         return buttons.filter(b => isAdmin ? true : !b.forAdminOnly)
     }, [buttons])
 
