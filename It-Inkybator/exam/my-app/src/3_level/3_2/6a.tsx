@@ -64,7 +64,7 @@ const StudentList = () => {
 
 
 ReactDOM.render(<div>
-        <Provider store={store }>
+        <Provider store={store}>
             <StudentList/>
         </Provider>
     </div>,

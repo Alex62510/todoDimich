@@ -17,3 +17,4 @@ store.subscribe(() => {
 store.dispatch({type: 'ANY'})
 
 //Что нужно написать вместо XXX, чтобы получить актуальный стейт?
+
