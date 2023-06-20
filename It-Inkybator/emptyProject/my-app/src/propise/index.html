@@ -1,10 +1,28 @@
 <script>
-    function isTriangle(a,b,c) {
+    // function findAverage(array) {
+    //     let res=array.reduce(function (sum,current){
+    //         return sum+current},[])
+    //      if (res==0){return 0}
+    //      else {return res/array.length}
+    // }
+    // console.log(findAverage([]))
 
-        return a+b>c&&a+c>b&&b+c>a
-    }
-    console.log(isTriangle(2,2,7))
-    console.log(isTriangle(4,2,7))
-    console.log(isTriangle(5,10,6))
-    console.log(isTriangle(6,2,7))
+    // function sum(numbers) {
+    //     return numbers.reduce((a, b) => a + b, 0);
+    // }
+    // console.log(sum([1]))
+    const reverseSeq = n => {
+        let arr=[]
+        for(let i=0; i<n;i++){
+           arr[i]=n-i
+        }
+
+
+        return arr;
+    };
+    console.log(reverseSeq(6))
 </script>
+
+
+
+
