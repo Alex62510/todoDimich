@@ -142,7 +142,7 @@ export const Login = () => {
 export const App = () => {
     return (
         <Routes>
-            <Route path={''} element={<Login/>}/>
+            {/*<Route path={''} element={<Login/>}/>*/}
             <Route path={'profile'} element={<Profile/>}/>
         </Routes>
     )
