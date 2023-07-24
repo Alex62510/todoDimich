@@ -1,26 +1,21 @@
 <script>
-    // function findAverage(array) {
-    //     let res=array.reduce(function (sum,current){
-    //         return sum+current},[])
-    //      if (res==0){return 0}
-    //      else {return res/array.length}
-    // }
-    // console.log(findAverage([]))
-
-    // function sum(numbers) {
-    //     return numbers.reduce((a, b) => a + b, 0);
-    // }
-    // console.log(sum([1]))
-    const reverseSeq = n => {
-        let arr=[]
-        for(let i=0; i<n;i++){
-           arr[i]=n-i
+    function removeSmallest(numbers) {
+        let min=numbers[0]
+        for(let i=0;i<numbers.length;i++){
+           if(min > numbers[i]){min=numbers[i]}
+        }console.log(min)
+        let indexMin=numbers.indexOf(min)
+        console.log("index",indexMin)
+const newArr=numbers.map(t=>t)
+        if (indexMin !== -1) {
+            newArr.splice(indexMin,1)
         }
+        return newArr
+    }
+
+    console.log(removeSmallest([4,2,2,6,8,3]))
 
 
-        return arr;
-    };
-    console.log(reverseSeq(6))
 </script>
 
 
