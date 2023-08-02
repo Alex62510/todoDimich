@@ -54,6 +54,7 @@ export const App = () => {
 
     const onChangeHandler = (value: string) => {
         console.log(value)
+        dispatch(setFind(value))
     }
 
     return (

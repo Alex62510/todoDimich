@@ -67,7 +67,7 @@ export const Users = () => {
         setTimerId(+setTimeout(() => {
             dispatch(getFriends(name))
         }, 1500))
-        // clearTimeout(name);
+        // clearTimeout(timerId)
     }, [name])
 
     return (
