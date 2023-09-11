@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { applyMiddleware, combineReducers, legacy_createStore as createStore } from 'redux'
 import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import React, { useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 import axios from 'axios'
 
 // Styles
@@ -22,6 +22,13 @@ const th: React.CSSProperties = {
 const td: React.CSSProperties = {
     padding: '10px',
     border: '1px solid black'
+}
+
+const thActive: React.CSSProperties = {
+    padding: '10px',
+    border: '1px solid black',
+    background: 'lightblue',
+    cursor: 'pointer'
 }
 
 // Types
@@ -53,8 +60,9 @@ const api = {
 // Reducer
 const initState = {
     users: [] as UserType[],
+    activeColumn: null as string | null,
     params: {
-        sortBy: null,
+        sortBy: 'name',
         sortDirection: 'asc'
     } as ParamsType
 }
@@ -66,6 +74,8 @@ const appReducer = (state: InitStateType = initState, action: ActionsType): Init
             return {...state, users: action.users}
         case 'SET_PARAMS':
             return {...state, params: {...state.params, ...action.payload}}
+        case 'SET_ACTIVE_COLUMN':
+            return {...state, activeColumn: action.value}
         default:
             return state
     }
@@ -83,30 +93,35 @@ const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 const setUsersAC = (users: UserType[]) => ({type: 'SET_USERS', users} as const)
 const setParamsAC = (payload: ParamsType) => ({type: 'SET_PARAMS', payload} as const)
+const setActiveColumnAC = (value: string) => ({type: 'SET_ACTIVE_COLUMN', value} as const)
 type ActionsType =
     | ReturnType<typeof setUsersAC>
     | ReturnType<typeof setParamsAC>
+    | ReturnType<typeof setActiveColumnAC>
 
 // Thunk
 const getUsersTC = (): AppThunk => (dispatch, getState) => {
     const params = getState().app.params
-    api.getUsers(params.sortBy ? params : undefined)
+    api.getUsers(params)
         .then(res => dispatch(setUsersAC(res.data.items)))
 }
+
 
 export const Users = () => {
     const users = useAppSelector(state => state.app.users)
     const sortBy = useAppSelector(state => state.app.params.sortBy)
     const sortDirection = useAppSelector(state => state.app.params.sortDirection)
-    console.log(users, sortBy, sortDirection)
 
     const dispatch = useAppDispatch()
 
-    // ❗❗❗ XXX ❗❗❗
+    useEffect(() => {
+        dispatch(getUsersTC())
+    }, [sortBy, sortDirection])
 
-    const sortHandler = (name: string) => {
+    const sortHandler = (sortBy: string) => {
         const direction = sortDirection === 'asc' ? 'desc' : 'asc'
-        dispatch(setParamsAC({sortBy: name, sortDirection: direction}))
+        dispatch(setParamsAC({sortBy, sortDirection: direction}))
+        dispatch(setActiveColumnAC(sortBy))
     };
 
     return (
@@ -115,12 +130,8 @@ export const Users = () => {
             <table style={table}>
                 <thead>
                 <tr>
-                    <th style={th} onClick={() => sortHandler('name')}>
-                        Name
-                    </th>
-                    <th style={th} onClick={() => sortHandler('age')}>
-                        Age
-                    </th>
+                    <Th name={'name'} sortHandler={sortHandler}/>
+                    <Th name={'age'} sortHandler={sortHandler}/>
                 </tr>
                 </thead>
                 <tbody>
@@ -140,6 +151,33 @@ export const Users = () => {
     )
 }
 
+type ThPropsType = {
+    name: string
+    sortHandler: (name: string) => void
+}
+
+const Th: FC<ThPropsType> = ({name, sortHandler}) => {
+    const activeColumn = useAppSelector(state => state.app.activeColumn)
+    const sortBy = useAppSelector(state => state.app.params.sortBy)
+    const sortDirection = useAppSelector(state => state.app.params.sortDirection)
+
+    const condition1 = '❗❗❗ XXX ❗❗❗'
+    const condition2 = '❗❗❗ YYY ❗❗❗'
+    const condition3 = '❗❗❗ ZZZ ❗❗❗'
+
+    return (
+        <th
+            style={condition1 ? thActive : th}
+            onClick={() => sortHandler(name)}
+        >
+            {name}
+            {
+                condition1 && condition2 && (condition3 ? <span> ⬆</span> : <span> ⬇</span>)
+            }
+        </th>
+    )
+}
+
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -149,10 +187,13 @@ root.render(
 );
 
 // 📜 Описание:
-// Перед вами таблица с пользователями. Но данные не подгружаются
-// Что нужно написать вместо XXX, чтобы:
-// 1) Пользователи подгрузились
-// 2) Чтобы работала сортировка по имени и возрасту
-// 3) Направление сортировки тоже должно работать (проверить можно нажав на одно и тоже поле 2 раза)
+// Перед вами таблица с пользователями.
+// Покликайте по вкладкам age и name и убедитесь, что сортировка работает верно,
+// но в шапке криво отображаются стрелки и не видно активной колонки
+// Ваша задача написать правильные условия вместо XXX YYY и ZZZ, чтобы:
+// 1) Стрелки соответствовали сортировке
+// 2) Шапка активной колонки была голубая, а неактивной серая
+// ❗ Ответ дайте через пробел
 
-// 🖥 Пример ответа: console.log(users, sortBy, sortDirection)
+// 🖥 Пример ответа: a === '1' b !== a c === state
+// activeColumn === name sortBy === activeColumn sortDirection === 'asc'

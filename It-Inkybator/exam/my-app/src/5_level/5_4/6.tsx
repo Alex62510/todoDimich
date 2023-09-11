@@ -55,3 +55,4 @@ root.render(<App/>);
 
 // 🖥 Пример ответа: quiz[0]=yes redux=h2
 // {q.question} {q.answer}`GPT
+//<h2 style={quizStyle}>{q.question}</h2> <h2 style={quizStyle}>{q.answer}</h2>
