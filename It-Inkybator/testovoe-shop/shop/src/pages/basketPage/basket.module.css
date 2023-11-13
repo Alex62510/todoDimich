@@ -1,0 +1,19 @@
+.basket {
+    display: flex;
+    justify-content: space-around;
+    width: 80VH;
+    height: 40VH;
+    border: 1px solid dimgray;
+}
+.order {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid dimgray;
+    width: 20%;
+}
+.items {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+}
