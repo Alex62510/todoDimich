@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "../../chat-socket/server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node ../../chat-socket/server/index.js",
+    "dev": "nodemon ../../chat-socket/server/index.js"
   },
   "keywords": [],
   "author": "",
